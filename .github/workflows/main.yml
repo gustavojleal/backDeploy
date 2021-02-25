@@ -23,7 +23,7 @@ jobs:
           source: ".,!node_modules"
           target: "~/app/backDeploy"
       
-      #YARN ON DIGITAL OCEAN and  MIGRATIONS TYPEORM
+      #YARN ON DIGITAL OCEAN, MIGRATIONS TYPEORM and RESTART SERVER.JS
       - name: Intall dependencies on Digital Ocean
         uses: appleboy/ssh-action@master
         with:
@@ -36,17 +36,6 @@ jobs:
               yarn
               ./node_modules/.bin/typeorm/ migration:run
               yarn build
-              
-              
-
-       #RESTART SERVER.JS
-      - name: Restart node on Digital Ocean
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          port: ${{ secrets.SSH_PORT }}
-          key: ${{ secrets.SSH_KEY }}
-          script: pm2 restart server
+              pm2 restart server
               
        

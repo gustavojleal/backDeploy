@@ -37,6 +37,7 @@ jobs:
               ./node_modules/.bin/typeorm/ migration:run
               yarn build
               
+              
 
        #RESTART SERVER.JS
       - name: Restart node on Digital Ocean

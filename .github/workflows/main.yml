@@ -11,18 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
-        with:
-          node-version: 12.x
-         
-         #DEPENDENCES YARN/NPM 
-      - name: Install dependencies
-        run: yarn
-  
-        #BUILD
-      - name: Run build
-        run: yarn build
   
       #COPY NEW CODE TO DIGITAL OCEAN
       - name: Copy dist to Digital Ocean
@@ -47,9 +35,8 @@ jobs:
               cd ~/app/backDeploy 
               yarn
               ./node_modules/.bin/typeorm/ migration:run
+              yarn build
               
-         
-      
 
        #RESTART SERVER.JS
       - name: Restart node on Digital Ocean

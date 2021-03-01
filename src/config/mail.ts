@@ -14,8 +14,8 @@ export default {
 
   defaults: {
     from: {
-      email: 'gustavojleal@gmail.com',
-      name: 'Gustavo Leal',
+      email: 'support@rundev.ca',
+      name: 'Easy KanBan Tecnical support',
     },
   },
 } as IMailConfig;
